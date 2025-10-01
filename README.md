@@ -25,18 +25,18 @@ Desenvolver um programa cliente/servidor que realize a **transferência de um ar
 
 ---
 
-### 🔸 Pré-requisitos
+### Pré-requisitos
 - **Python 3.x** instalado nas máquinas.  
 - Certifique-se de que o arquivo de teste (`file_example_MP4_1920_18MG.mp4`) está na mesma pasta do `servidor.py`.  
 
-### 🔸 Executar o servidor
+### Executar o servidor
 Na máquina **servidora**:
 ```bash
 python3 servidor.py
 ```
 > O servidor ficará ouvindo simultaneamente em **TCP (porta 5000)** e **UDP (porta 5001)**.  
 
-### 🔸 Executar o cliente
+### Executar o cliente
 Na máquina **cliente**:
 ```bash
 python3 cliente.py
@@ -50,15 +50,21 @@ Escolha o protocolo:
 
 No final, será exibido o **tempo de transmissão** (calculado pelo servidor). 
 
+### Execução em laboratório
+- Rodar o servidor em um computador, liberando as portas 5000 (TCP) e 5001 (UDP).  
+- Rodar o cliente em outro computador, apontando para o **IP do servidor** de forma manual.  
+- Recolher tempos de execução e comparar TCP vs UDP.  
 ---
 
 ### Resultados Esperados
 - **TCP**: transferência confiável, sem perdas, mas com maior tempo em caso de redes com latência/erros.  
 - **UDP**: transferência mais rápida, mas sujeita a perdas de pacotes.
 
+### Resultados Obtidos
+- Em média a transferência do arquivo em **TCP** tomou 0.70 segundos.
+- Em média a transferência do arquivo em **UDP** tomou 12.50 segundos.
+- Os testes foram realizados exclusivamente em ambiente local.
+- Pode-se comprovar na prática que o envio de dados por UDP se torna mais rápido visto que não possui confirmação, retransmissão, etc.
+- Optou-se por manter o buffer com tamanho 4096 bytes, pois durante os testes se mostrou mais performático e de fato conincide com o tamanho da paginação de memória.
 ---
 
-### Execução em laboratório
-- Rodar o servidor em um computador, liberando as portas 5000 (TCP) e 5001 (UDP).  
-- Rodar o cliente em outro computador, apontando para o **IP do servidor** de forma manual.  
-- Recolher tempos de execução e comparar TCP vs UDP.  
