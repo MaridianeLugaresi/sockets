@@ -23,7 +23,7 @@ def tcp_server(host="", port=5000):
 
                 tempo = end - start
                 conn.sendall(f"\nTEMPO: {tempo}".encode())
-                print(f"[TCP] Arquivo enviado em {tempo:.3f}s")
+                print(f"[TCP] Arquivo enviado em {tempo}s")
 
 def udp_server(host="", port=5001):
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
@@ -44,7 +44,7 @@ def udp_server(host="", port=5001):
 
                 tempo = end - start
                 s.sendto(f"TEMPO: {tempo}".encode(), addr)
-                print(f"[UDP] Arquivo enviado em {tempo:.3f}s para {addr}")
+                print(f"[UDP] Arquivo enviado em {tempo}s para {addr}")
 
 if __name__ == "__main__":
     threading.Thread(target=tcp_server, daemon=True).start()
